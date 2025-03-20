@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Clima</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 min-h-screen transition-colors duration-500">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">Dashboard de Clima</h1>
+        </header>
+
+        <div class="search-container mb-8">
+            <div class="flex flex-col md:flex-row gap-2">
+                <input type="text" id="city-input" placeholder="Digite o nome da cidade" 
+                    class="flex-grow p-3 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                <button id="search-button" 
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-search mr-2"></i>Pesquisar
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="hidden flex justify-center items-center my-8">
+            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+        </div>
+
+        <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-8"></div>
+
+        <div id="weather-card" class="hidden bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 transform hover:shadow-xl">
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <div>
+                        <h2 id="city-name" class="text-2xl font-bold text-gray-800"></h2>
+                        <p id="date" class="text-gray-600"></p>
+                    </div>
+                    <div class="flex items-center mt-4 md:mt-0">
+                        <img id="weather-icon" src="" alt="Condição climática" class="w-16 h-16">
+                        <div class="ml-4">
+                            <h3 id="temperature" class="text-4xl font-bold text-gray-800"></h3>
+                            <p id="weather-description" class="text-gray-600"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-temperature-low text-blue-600 text-2xl"></i>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Sensação</p>
+                            <p id="feels-like" class="text-lg font-semibold text-gray-800"></p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-tint text-blue-600 text-2xl"></i>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Umidade</p>
+                            <p id="humidity" class="text-lg font-semibold text-gray-800"></p>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg flex items-center">
+                        <i class="fas fa-wind text-blue-600 text-2xl"></i>
+                        <div class="ml-4">
+                            <p class="text-gray-500">Vento</p>
+                            <p id="wind-speed" class="text-lg font-semibold text-gray-800"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="weather-message" class="hidden mt-6 p-4 rounded-lg bg-blue-50 border border-blue-200 transition-all duration-300 transform">
+                    <p class="text-lg text-gray-800 text-center font-medium"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 text-gray-600">
+        <p>Desenvolvido com <i class="fas fa-heart text-red-500"></i> | Dados fornecidos por OpenWeather API</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
